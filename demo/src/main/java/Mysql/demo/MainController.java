@@ -23,6 +23,7 @@ public class MainController {
     @GetMapping("/form")
     public String addNew(Model model){
         model.addAttribute("liczarki", new Liczarki());
+        System.out.println(model);
         return "form";
     }
 

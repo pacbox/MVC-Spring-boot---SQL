@@ -36,7 +36,7 @@ public class Liczarki {
     public String toString() {
         return "Liczarki{" +
                 "id=" + id +
-                ", model='" + typ + '\'' +
+                ", typ='" + typ + '\'' +
                 '}';
     }
 }

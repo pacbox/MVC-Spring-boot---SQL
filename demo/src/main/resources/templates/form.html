@@ -7,10 +7,16 @@
 
 <body>
 <div class="container text-center">
-    <form action="#" th:action="@{/process_register}" th.object="${liczarki}" method="post"
+    <form  th:action="@{/process_register}" th.object="${liczarki}" method="post"
     >
 
-        <p>Model: <input type="text" th:field="*{typ}"/></p>
+<!--        <p>Model: <input type="text" th:field="*{typ}"/></p>-->
+
+        <p>Typ:
+        <input class="form-control"
+               type="text"
+               th:value="${typ}" id="typ" name="typ" />
+        </p>
             <button type="submit" class="btn btn-primary">Sign Up</button>
 
 
