@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Dodawanie </title>
+</head>
+
+<body>
+<div class="container text-center">
+    <form action="#" th:action="@{/process_register}" th.object="${liczarki}" method="post"
+    >
+
+        <p>Model: <input type="text" th:field="*{typ}"/></p>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+
+
+    </form></div>
+
+
+</body>
+</html>
