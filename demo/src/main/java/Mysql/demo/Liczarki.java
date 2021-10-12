@@ -3,6 +3,10 @@ package Mysql.demo;
 import org.hibernate.boot.registry.selector.StrategyRegistration;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Entity
 
@@ -14,6 +18,29 @@ public class Liczarki {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String typ;
+    private String state;
+    private LocalDate dateStamp = LocalDate.now();
+
+
+
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
+    private String serial;
 
 
     public Long getId() {
@@ -31,6 +58,8 @@ public class Liczarki {
     public void setTyp(String typ) {
         this.typ = typ;
     }
+
+
 
     @Override
     public String toString() {

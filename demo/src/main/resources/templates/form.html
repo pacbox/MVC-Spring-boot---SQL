@@ -12,12 +12,15 @@
 
 <!--        <p>Model: <input type="text" th:field="*{typ}"/></p>-->
 
-        <p>Typ:
-        <input class="form-control"
-               type="text"
-               th:value="${typ}" id="typ" name="typ" />
-        </p>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+        <p>Typ:<input class="form-control" type="text" th:value="${typ}" id="typ" name="typ" /> </p>
+        <p>Nr seryjny:<input class="form-control" type="text" th:value="${serial}" id="serial" name="serial" /> </p>
+
+       <p> Stan:<select th:value="*{state}" class="form-control" name="state" id="state">
+           <option value="onSotck">Magazyn</option>
+           <option value="sold">Sprzedane</option>
+           <option value="released">Wydano</option></select></p>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
 
 
     </form></div>
