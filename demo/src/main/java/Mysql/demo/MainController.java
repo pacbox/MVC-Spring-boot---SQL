@@ -12,8 +12,10 @@ import java.util.List;
 @Controller
 
 public class MainController {
+//    @Autowired
+//    public LiczarkiRepository liczarkiRepository;
     @Autowired
-    public LiczarkiRepository liczarkiRepository;
+    public  LiczarkiService liczarkiService;
 
     @GetMapping("")
     public String viewHomePage(){
@@ -27,20 +29,21 @@ public class MainController {
         return "form";
     }
 
+
+
     @PostMapping("/process_register")
     public String registration(Liczarki licz){
-       liczarkiRepository.save(licz);
-       return "index";
+        liczarkiService.saveToRepo(licz);
+        return "index";
     }
 
     @GetMapping("/liczarki")
     public String listUsers(Model model) {
-        List<Liczarki> listLiczarki = (List<Liczarki>) liczarkiRepository.findAll();
-        listLiczarki.forEach(System.out :: println);
-        model.addAttribute("listLiczarki", listLiczarki);
-
+    List<Liczarki> listLiczarki= liczarkiService.findAll();
+       // listLiczarki.forEach(System.out :: println);
+        model.addAttribute("listLiczarki", listLiczarki );
         return "liczarki";
-        //asdasd
+
 
     }
 
