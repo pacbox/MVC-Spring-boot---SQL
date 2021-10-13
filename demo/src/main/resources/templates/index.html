@@ -16,5 +16,12 @@
     <h3><a th:href="@{/display}"> Liczarki</a></h3>
 
 </div>
+
+
+
+<form  th:action="@{/search}" method="post" action="#">
+    <input type="text" th:name="keyword"/> &nbsp;
+    <input type="submit" class="btn btn-primary" />
+</form>
 </body>
 </html>

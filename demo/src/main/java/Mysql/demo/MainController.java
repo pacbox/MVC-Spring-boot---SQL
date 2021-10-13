@@ -3,10 +3,9 @@ package Mysql.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -45,6 +44,16 @@ public class MainController {
         return "liczarki";
 
 
+        }
+    @RequestMapping("/search")
+    public ModelAndView search(@RequestParam String keyword){
+        System.out.println(keyword);
+        ModelAndView mav = new ModelAndView("liczarki");
+       List <Liczarki> listLiczarki = liczarkiService.search(keyword);
+        mav.addObject("listLiczarki",listLiczarki );
+        System.out.println(listLiczarki);
+  //      mav.addObject("message",keyword);
+        return mav;
     }
 
 }

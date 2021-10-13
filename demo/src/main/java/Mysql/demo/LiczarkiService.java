@@ -24,4 +24,8 @@ public class LiczarkiService {
        List<Liczarki> listLiczarki = (List<Liczarki>) liczarkiRepository.findAll();
        return listLiczarki;
     }
+
+    public  List<Liczarki> search(String keyword){
+        return liczarkiRepository.search(keyword);
+    }
 }

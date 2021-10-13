@@ -11,13 +11,17 @@
         <tr>
             <th>id</th>
             <th>typ</th>
+            <th>state</th>
+            <th>serial</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="liczarki: ${listLiczarki}">
-            <td th:text="${liczarki.id}">id</td>
-            <td th:text="${liczarki.getTyp}">typ</td>
+        <tr th:each="c: ${listLiczarki}">
+            <td th:text="${c.id}">id</td>
+            <td th:text="${c.typ}">typ</td>
+            <td th:text="${c.state}">state</td>
+            <td th:text="${c.serial}">serial</td>
 
 
 
