@@ -7,27 +7,41 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 
+
 <body>
 <div class="container">
-<div><form action="#" th:action="@{/process_register}" th:object="${liczarki}" method="post"
->
-    <h1>Edycja pola</h1>
+    <h1>Edytuj</h1>
+    <form  th:action="@{/process_register}" th:object="${liczarki}" method="post">
+        <table>
+            <input type="hidden" th:field="*{id}"/>
+            <tr>
+                <td>Typ:</td>
+                <td ><select type="text" th:field="*{typ}" class="form-control mb-16 col-20">
+                    <option value="GFS-120">GFS-100</option>
+                    <option value="GFS-120">GFS-120</option>
+                    <option value="USF-51">USF-51</option></select></td>
+            </tr>
+            <tr>
+                <td>Nr seryjny:</td>
+                <td><input type="text" th:field="*{serial}"  class="form-control mb-16 col-20"/></td>
+
+            </tr>
+            <tr>
+                <td>Stan</td>
+                <td><select type="text" th:field="*{state}" class="form-control mb-16 col-20" >
+                    <option value="Magazyn">Magazyn</option>
+                    <option value="Sprzedane">Sprzedane</option>
+                    <option value="Wydano">Wydano</option></select></td>
+            </tr>
+
+        </table>
+
+        <button type="submit" class="btn btn-primary">Edytuj</button>
+
+    </form></div>
 
 
-<input type="hidden" th:field="*{id}"/>
-    <p>Typ:<input  type="text" th:field="*{typ}"  /> </p>
-    <p>Nr seryjny:<input  type="text" th:field="*{serial}"  /> </p>
-
-    <p> Stan:<select type="text" th:field="*{state}" >
-        <option value="onSotck">Magazyn</option>
-        <option value="sold">Sprzedane</option>
-        <option value="released">Wydano</option></select></p>
-
-    <button type="submit" class="btn btn-primary">Edytuj</button>
-
-
-</form></div>
-
-</div>
 </body>
+
+
 </html>

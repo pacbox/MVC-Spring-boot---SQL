@@ -10,20 +10,32 @@
 <body>
 <div class="container">
     <h1>Dodawanie produktu</h1>
+    <form  th:action="@{/process_register}" th:object="${liczarki}" method="post">
+    <table>
 
+        <tr>
+            <td>Typ:</td>
+            <td ><select type="text" th:field="*{typ}" class="form-control mb-16 col-20">
+                <option value="GFS-120">GFS-100</option>
+                <option value="GFS-120">GFS-120</option>
+                <option value="USF-51">USF-51</option></select></td>
+        </tr>
+        <tr>
+            <td>Nr seryjny:</td>
+            <td><input type="text" th:field="*{serial}"  class="form-control mb-16 col-20"/></td>
 
-    <form  th:action="@{/process_register}" th:object="${liczarki}" method="post"
-    >
-        <p>Typ:<input type="text" th:field="*{typ}" /> </p>
-        <p>Nr seryjny:<input type="text" th:field="*{serial}"  /> </p>
+        </tr>
+        <tr>
+            <td>Stan</td>
+            <td><select type="text" th:field="*{state}" class="form-control mb-16 col-20" >
+                <option value="Magazyn">Magazyn</option>
+                <option value="Sprzedane">Sprzedane</option>
+                <option value="Wydano">Wydano</option></select></td>
+        </tr>
 
-       <p> Stan:<select type="text" th:field="*{state}"  >
-           <option value="onSotck">Magazyn</option>
-           <option value="sold">Sprzedane</option>
-           <option value="released">Wydano</option></select></p>
+    </table>
 
         <button type="submit" class="btn btn-primary">Dodaj</button>
-
 
     </form></div>
 

@@ -18,6 +18,7 @@ public class MainController {
 
     @GetMapping("")
     public String viewHomePage(){
+
         return "index";
     }
 
