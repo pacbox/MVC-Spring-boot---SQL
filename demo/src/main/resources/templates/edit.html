@@ -3,27 +3,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Edit</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 
 <body>
-<div><form action="#" th:action="@{/process_register}" th.object="${liczarki}" method="post"
+<div class="container">
+<div><form action="#" th:action="@{/process_register}" th:object="${liczarki}" method="post"
 >
+    <h1>Edycja pola</h1>
 
 
-<input type="hidden" th:value="${id}" id="id" name="id"/>
-    <p>Typ:<input class="form-control" type="text" th:value="${typ}" id="typ" name="typ" /> </p>
-    <p>Nr seryjny:<input class="form-control" type="text" th:value="${serial}" id="serial" name="serial" /> </p>
+<input type="hidden" th:field="*{id}"/>
+    <p>Typ:<input  type="text" th:field="*{typ}"  /> </p>
+    <p>Nr seryjny:<input  type="text" th:field="*{serial}"  /> </p>
 
-    <p> Stan:<select th:value="${state}" class="form-control" name="state" id="state">
+    <p> Stan:<select type="text" th:field="*{state}" >
         <option value="onSotck">Magazyn</option>
         <option value="sold">Sprzedane</option>
         <option value="released">Wydano</option></select></p>
 
-    <button type="submit" class="btn btn-primary">Sign Up</button>
+    <button type="submit" class="btn btn-primary">Edytuj</button>
 
 
 </form></div>
 
-
+</div>
 </body>
 </html>

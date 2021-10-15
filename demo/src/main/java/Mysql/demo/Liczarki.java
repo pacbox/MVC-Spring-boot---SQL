@@ -21,6 +21,16 @@ public class Liczarki {
     private String state;
     private LocalDate dateStamp = LocalDate.now();
 
+    public LocalDate getDateStamp() {
+        return dateStamp;
+    }
+
+    public void setDateStamp(LocalDate dateStamp) {
+        this.dateStamp = dateStamp;
+    }
+
+
+
 
 
 
