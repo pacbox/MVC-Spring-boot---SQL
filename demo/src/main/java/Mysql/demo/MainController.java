@@ -47,13 +47,31 @@ public class MainController {
         }
     @RequestMapping("/search")
     public ModelAndView search(@RequestParam String keyword){
-        System.out.println(keyword);
+        //System.out.println(keyword);
         ModelAndView mav = new ModelAndView("liczarki");
        List <Liczarki> listLiczarki = liczarkiService.search(keyword);
         mav.addObject("listLiczarki",listLiczarki );
         System.out.println(listLiczarki);
   //      mav.addObject("message",keyword);
         return mav;
+    }
+//    @GetMapping("/edit/{id}")
+//    public ModelAndView edit(@PathVariable (value="id")  Long id){
+//        System.out.println(id);
+//     ModelAndView mav = new ModelAndView("edit");
+//     Liczarki editP = liczarkiService.searchByID(id);
+//     mav.addObject("liczarki",editP);
+//     System.out.println(editP);
+//     return mav;
+//    }
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable (value="id")  Long id, Model model){
+        System.out.println(id);
+
+     Liczarki editP = liczarkiService.searchByID(id);
+     model.addAttribute("liczarki", editP);
+     System.out.println(editP);
+     return "edit";
     }
 
 }

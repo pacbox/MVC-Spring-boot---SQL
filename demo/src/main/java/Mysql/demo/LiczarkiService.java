@@ -22,10 +22,15 @@ public class LiczarkiService {
 
     public List<Liczarki> findAll(){
        List<Liczarki> listLiczarki = (List<Liczarki>) liczarkiRepository.findAll();
-       return listLiczarki;
+
+             return listLiczarki;
     }
 
     public  List<Liczarki> search(String keyword){
         return liczarkiRepository.search(keyword);
+    }
+
+    public Liczarki searchByID(Long id){
+        return liczarkiRepository.findById(id).get();
     }
 }
