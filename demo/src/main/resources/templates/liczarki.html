@@ -18,6 +18,7 @@
             <th>Stan</th>
             <th>Numer seryjny</th>
             <th>Data dodanie</th>
+            <th>Data sprzedazy</th>
             <th>Akcja</th>
 
         </tr>
@@ -29,6 +30,7 @@
             <td th:text="${c.state}">state</td>
             <td th:text="${c.serial}">serial</td>
             <td th:text=" ${c.dateStamp}">data</td>
+            <td th:text=" ${c.sellDate}">data</td>
             <td>
                 <a th:href="@{edit/{id}(id=${c.id})}">EDYCJA</a>
                         </td>

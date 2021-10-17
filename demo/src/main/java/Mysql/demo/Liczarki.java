@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 
 @Entity
@@ -19,7 +20,19 @@ public class Liczarki {
     private Long id;
     private String typ;
     private String state;
+
+    public LocalDate getSellDate() {
+        return sellDate;
+    }
+
+    public void setSellDate(LocalDate sellDate) {
+        this.sellDate = sellDate;
+    }
+
+    @Column (name = "DataPrzyjecia")
     private LocalDate dateStamp = LocalDate.now();
+    @Column (name = "DataSprzedazy")
+    private LocalDate sellDate;
 
     public void setDateStamp(LocalDate dateStamp) {
         this.dateStamp = dateStamp;

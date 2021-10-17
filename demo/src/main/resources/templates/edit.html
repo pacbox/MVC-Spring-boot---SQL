@@ -27,11 +27,20 @@
 
             </tr>
             <tr>
-                <td>Stan</td>
+                <td>Stan:</td>
                 <td><select type="text" th:field="*{state}" class="form-control mb-16 col-20" >
                     <option value="Magazyn">Magazyn</option>
                     <option value="Sprzedane">Sprzedane</option>
                     <option value="Wydano">Wydano</option></select></td>
+            </tr>
+            <tr>
+                <td>Data sprzedazy:</td>
+                <td><input type="text" th:field="*{sellDate}"  class="form-control mb-16 col-20"/></td>
+            </tr>
+            <tr>
+                <td>Data przyjecia:</td>
+                <td><input type="text" th:field="*{dateStamp}"  class="form-control mb-16 col-20"/></td>
+
             </tr>
 
         </table>

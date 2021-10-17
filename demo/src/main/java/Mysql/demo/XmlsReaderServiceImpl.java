@@ -60,7 +60,7 @@ public class XmlsReaderServiceImpl implements XmlsReaderService{
                                     break;
                                 case 2:
                                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                                    DataFormatter dataFormatter = new DataFormatter(); //
+                                    DataFormatter dataFormatter = new DataFormatter();
                                     String date = dataFormatter.formatCellValue(cell);
                                     LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
                                     l.setDateStamp(localDate);
@@ -69,7 +69,21 @@ public class XmlsReaderServiceImpl implements XmlsReaderService{
 
                                 case 3: l.setState(cell.getStringCellValue());
                                     i++;
-                                    break;}
+                                    break;
+                                case 4:
+                                    dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                    dataFormatter = new DataFormatter();
+                                    String sell = dataFormatter.formatCellValue(cell);
+                                    LocalDate sellDate = LocalDate.parse(sell, dateTimeFormatter);
+                                    l.setSellDate(sellDate);
+                                    i++;
+                                    break;
+
+
+
+
+                         }
+
                         list.add(l);
                 }
             }

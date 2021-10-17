@@ -19,15 +19,26 @@
     <h3><a th:href="@{/display}"> Liczarki</a></h3>
 
 </div>
-
-
-
-<form  th:action="@{/search}" method="post" action="#">
+    <form  th:action="@{/search}" method="post" action="#">
     <input type="text" th:name="keyword"/> &nbsp;
 <!--    <input type="submit" class="btn btn-primary" />-->
     <button type="submit" class="btn btn-primary">Wyszukaj</button>
 
 </form>
+
+
+<!--    <H4 align="left">Stan magazynowy</H4>-->
+<!--    <table align="left" th:action="@{/stockStatus}" th:object="${stock}" method="GET">-->
+<!--        <tr>-->
+<!--            <td> GFS-100</td>-->
+<!--            <td type="text" th:field="*{gfs100}"> </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td> GFS-120</td>-->
+<!--            <td> </td>-->
+
+        </tr>
+    </table>
 </div>
 </body>
 </html>
