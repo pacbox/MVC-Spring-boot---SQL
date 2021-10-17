@@ -52,19 +52,24 @@ public class XmlsReaderServiceImpl implements XmlsReaderService{
                     Cell cell = cellIterator.next();
                          switch (i){
                                 case 0: l.setTyp(cell.getStringCellValue());
+                                    i++;
+                                    break;
                                 case 1:
-                                    DataFormatter formatter = new DataFormatter();
-                                    String val = formatter.formatCellValue(cell);
-                                    l.setSerial(val);
+
+                                    l.setSerial(cell.getStringCellValue());
+                                    i++;
+                                    break;
                             case 2:
                                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                                 DataFormatter dataFormatter = new DataFormatter(); //
                                String date = dataFormatter.formatCellValue(cell);
                                System.out.println(date);
-                              String date2 = "01/02/2012";
-                                LocalDate localDate = LocalDate.parse(date2, dateTimeFormatter);
+
+                                LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
                                 l.setDateStamp(localDate);
- //                           case 3: l.setState(cell.getStringCellValue());
+                                i++;
+                                break;
+                            case 3: l.setState(cell.getStringCellValue());
                                  i++;
                             break;}
                         list.add(l);
