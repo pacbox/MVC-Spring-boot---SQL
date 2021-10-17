@@ -52,28 +52,24 @@ public class XmlsReaderServiceImpl implements XmlsReaderService{
                     Cell cell = cellIterator.next();
                          switch (i){
                                 case 0: l.setTyp(cell.getStringCellValue());
-
-
                                     i++;
                                     break;
                                 case 1:
-
                                     l.setSerial(cell.getStringCellValue());
                                     i++;
                                     break;
-                            case 2:
-                                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                                DataFormatter dataFormatter = new DataFormatter(); //
-                               String date = dataFormatter.formatCellValue(cell);
-                               System.out.println(date);
+                                case 2:
+                                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                    DataFormatter dataFormatter = new DataFormatter(); //
+                                    String date = dataFormatter.formatCellValue(cell);
+                                    LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
+                                    l.setDateStamp(localDate);
+                                    i++;
+                                    break;
 
-                                LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
-                                l.setDateStamp(localDate);
-                                i++;
-                                break;
-                            case 3: l.setState(cell.getStringCellValue());
-                                 i++;
-                            break;}
+                                case 3: l.setState(cell.getStringCellValue());
+                                    i++;
+                                    break;}
                         list.add(l);
                 }
             }
