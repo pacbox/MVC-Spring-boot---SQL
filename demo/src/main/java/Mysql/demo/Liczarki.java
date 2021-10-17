@@ -21,18 +21,9 @@ public class Liczarki {
     private String state;
     private LocalDate dateStamp = LocalDate.now();
 
-    public LocalDate getDateStamp() {
-        return dateStamp;
-    }
-
     public void setDateStamp(LocalDate dateStamp) {
         this.dateStamp = dateStamp;
     }
-
-
-
-
-
 
     public String getState() {
         return state;
@@ -77,6 +68,10 @@ public class Liczarki {
                 "id=" + id +
                 ", typ='" + typ + '\'' +
                 '}';
+    }
+
+    public LocalDate getDateStamp() {
+        return dateStamp;
     }
 }
 
