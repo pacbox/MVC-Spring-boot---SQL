@@ -53,6 +53,7 @@ public class XmlsReaderServiceImpl implements XmlsReaderService{
                          switch (i){
                                 case 0: l.setTyp(cell.getStringCellValue());
 
+
                                     i++;
                                     break;
                                 case 1:
