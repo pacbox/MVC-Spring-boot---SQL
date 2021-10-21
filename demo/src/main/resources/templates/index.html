@@ -25,20 +25,26 @@
     <button type="submit" class="btn btn-primary">Wyszukaj</button>
 
 </form>
+<p></p>
+
+    <H4>Stan magazynowy</H4>
 
 
-<!--    <H4 align="left">Stan magazynowy</H4>-->
-<!--    <table align="left" th:action="@{/stockStatus}" th:object="${stock}" method="GET">-->
-<!--        <tr>-->
-<!--            <td> GFS-100</td>-->
-<!--            <td type="text" th:field="*{gfs100}"> </td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td> GFS-120</td>-->
-<!--            <td> </td>-->
-
+    <table  class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>TYP</th>
+            <th>LICZBA</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c: ${list}">
+            <td th:text="${c.typ}">id</td>
+            <td th:text="${c.count}">typ</td>
+        </tr>
+        </tbody>
     </table>
+
 </div>
 </body>
 </html>

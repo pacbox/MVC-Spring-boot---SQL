@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,9 +17,25 @@ public class MainController {
     @Autowired
     public  LiczarkiService liczarkiService;
 
-    @GetMapping("")
-    public String viewHomePage(){
+    @Autowired
+    public StockService stockService;
 
+
+    @Override
+    public String toString() {
+        return "MainController{" +
+                "liczarkiService=" + liczarkiService +
+                ", stockService=" + stockService +
+                '}';
+    }
+
+    @GetMapping("")
+    public String viewHomePage(Model model){
+    List<Stock> list = stockService.checkStock();
+
+
+       // model.addAttribute("gfs100", stockService.checkStock("gfs-100"));
+        model.addAttribute("list", list);
         return "index";
     }
 
@@ -40,7 +57,6 @@ public class MainController {
     @GetMapping("/liczarki")
     public String listUsers(Model model) {
     List<Liczarki> listLiczarki= liczarkiService.findAll();
-       // listLiczarki.forEach(System.out :: println);
         model.addAttribute("listLiczarki", listLiczarki );
         return "liczarki";
 
@@ -74,5 +90,14 @@ public class MainController {
      System.out.println(editP);
      return "edit";
     }
+
+    @GetMapping("/stockStatus")
+    public  String stockStatus(Model model){
+        //Stock gfs100;
+//        List <Stock> stockList = ;
+        //model.addAttribute("gfs100", stockService.checkStock("gfs100"));
+        model.addAttribute("gfs100", "100");
+    return "index";}
+
 
 }
