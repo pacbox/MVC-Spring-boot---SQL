@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -19,6 +20,12 @@ public class MainController {
 
     @Autowired
     public StockService stockService;
+
+//    @Autowired
+//    public ServiceSellReport serviceSellReport;
+
+    @Autowired
+    SellReportRepository sellReportRepository;
 
 
     @Override
@@ -98,6 +105,19 @@ public class MainController {
         //model.addAttribute("gfs100", stockService.checkStock("gfs100"));
         model.addAttribute("gfs100", "100");
     return "index";}
+
+    @GetMapping("/choiceyear")
+    public String reportChoiceYear(Model model){
+        model.addAttribute("SellReport", new SellReport());
+        return "choiceyear";}
+
+    @PostMapping("/report")
+    public String report(SellReport sellReport, Model model){
+        List<SellReport> sellReports = (List<SellReport>) sellReportRepository.findAll();
+        //sellReports.sort();
+        //Collection.sort
+        model.addAttribute("SellReports", sellReports);
+        return "report";}
 
 
 }

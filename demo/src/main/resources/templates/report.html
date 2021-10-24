@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Raport</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" align="center">
+
+<!--    <h1>Raport sprzedaży za rok: <div th:text="${SellReports.year}" > </div></h1>-->
+
+
+
+
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>miesiac</th>
+                <th>typ</th>
+                <th>sprzedaz</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c: ${SellReports}">
+                <td th:text="${c.month}">typ</td>
+                <td th:text="${c.typ}">typ</td>
+                <td th:text="${c.sell}">sell</td>
+                        </tr>
+            </tbody>
+        </table>
+
+    <div align="left"><a  th:href="@{/}">Powrót do menu</a></div>
+</div>
+
+</body>
+</html>

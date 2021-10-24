@@ -9,23 +9,23 @@
 
 <body>
 <div class="container" align="center">
-<div>
+    <div>
 
-    <body><h1>Menu </h1></body>
-</div>
-<div>
-    <h3><a th:href="@{/form}"> Dodaj produkt</a></h3>
-    <h3><a th:href="@{/liczarki}"> Lista liczarek</a></h3>
-    <h3><a th:href="@{/display}"> Liczarki</a></h3>
+        <body><h1>Menu </h1></body>
+    </div>
+    <div>
+        <h3><a th:href="@{/form}"> Dodaj produkt</a></h3>
+        <h3><a th:href="@{/liczarki}"> Lista liczarek</a></h3>
+        <h3><a th:href="@{/choiceyear}"> Raport sprzedaży</a></h3>
 
-</div>
+    </div>
     <form  th:action="@{/search}" method="post" action="#">
-    <input type="text" th:name="keyword"/> &nbsp;
-<!--    <input type="submit" class="btn btn-primary" />-->
-    <button type="submit" class="btn btn-primary">Wyszukaj</button>
+        <input type="text" th:name="keyword"/> &nbsp;
+        <!--    <input type="submit" class="btn btn-primary" />-->
+        <button type="submit" class="btn btn-primary">Wyszukaj</button>
 
-</form>
-<p></p>
+    </form>
+    <p></p>
 
     <H4>Stan magazynowy</H4>
 

@@ -10,38 +10,27 @@ import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
+	@Autowired
+	public XmlsReaderService xmlsReaderService;
 
 	@Autowired
 	public LiczarkiRepository liczarkiRepository;
+//	@Autowired
+//	public ServiceSellReport serviceSellReport;
 
 	public static void main(String[] args){
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
 
-@Autowired
-public XmlsReaderService xmlsReaderService;
+
 
 
 	@Override
 	public void run(String... args) throws Exception {
-//		Liczarki l = new Liczarki();
-//		l.setTyp("Gfs-130");
-//		Liczarki l1 = new Liczarki();
-//		l1.setTyp("Gfs-140");
-//		Liczarki l2 = new Liczarki();
-//		l2.setTyp("Gfs-120");
-//		System.out.println("DUPA");
-//		liczarkiRepository.save(l);
-//		liczarkiRepository.save(l1);
-//		liczarkiRepository.save(l2);
-		xmlsReaderService.readXmls();
-
-
-
-		//ArrayList<Liczarki> liczarki = (ArrayList<Liczarki>) liczarkiRepository.findAll();
-
-		//liczarki.forEach(System.out :: println);
-
+		//xmlsReaderService.readXmls();
+//		serviceSellReport.createReport();
+// 		System.out.println(serviceSellReport.createReport());
 	}
 }
