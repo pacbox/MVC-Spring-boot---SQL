@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -21,11 +23,12 @@ public class MainController {
     @Autowired
     public StockService stockService;
 
-//    @Autowired
-//    public ServiceSellReport serviceSellReport;
+    @Autowired
+    public ServiceSellReport serviceSellReport;
 
     @Autowired
     SellReportRepository sellReportRepository;
+
 
 
     @Override
@@ -49,16 +52,17 @@ public class MainController {
     @GetMapping("/form")
     public String addNew(Model model){
         model.addAttribute("liczarki", new Liczarki());
-        System.out.println(model);
+        //System.out.println(model);
         return "form";
     }
 
 
 
     @PostMapping("/process_register")
-    public String registration(Liczarki licz){
+    public String registration(Liczarki licz, RedirectAttributes re){
         liczarkiService.saveToRepo(licz);
-        return "index";
+        re.addFlashAttribute("message", "Urzadzenie dodane poprawnie");
+        return "redirect:/form";
     }
 
     @GetMapping("/liczarki")
@@ -106,17 +110,31 @@ public class MainController {
         model.addAttribute("gfs100", "100");
     return "index";}
 
+//    @GetMapping("/choiceyear")
+//    public String reportChoiceYear(Model model){
+//        model.addAttribute("SellReport", new SellReport());
+//
+//        return "choiceyear";}
+
     @GetMapping("/choiceyear")
     public String reportChoiceYear(Model model){
-        model.addAttribute("SellReport", new SellReport());
+        String year = null;
+        String typ = null;
+       model.addAttribute("year", year);
+        model.addAttribute("typ", typ);
         return "choiceyear";}
 
     @PostMapping("/report")
-    public String report(SellReport sellReport, Model model){
-        List<SellReport> sellReports = (List<SellReport>) sellReportRepository.findAll();
-        //sellReports.sort();
-        //Collection.sort
-        model.addAttribute("SellReports", sellReports);
+    public String report(String year, String typ, Model model){
+       // List<SellReport> sellReports = (List<SellReport>) sellReportRepository.findAll();
+        List<SellReport> sellReports = serviceSellReport.createReport(typ,year);
+
+        //Collections.sort(sellReports);
+        Collections.reverse(sellReports);
+        model.addAttribute("year", year);
+        model.addAttribute("typ", typ);
+        model.addAttribute("sellreports", sellReports);
+
         return "report";}
 
 

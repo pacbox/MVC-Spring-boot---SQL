@@ -17,7 +17,7 @@ import javax.persistence.*;
 
 
 @Table(name = "SellReport")
-public class SellReport {
+public class SellReport implements Comparable<SellReport> {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
@@ -30,6 +30,11 @@ public class SellReport {
 
     public SellReport() {
 
+    }
+
+    @Override
+    public int compareTo(SellReport o) {
+        return Double.compare(this.getMonth(),getMonth()); //implementacja comparable sortuje po miesiacach
     }
 
     public Long getId() {

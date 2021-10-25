@@ -10,6 +10,10 @@
 <body>
 <div class="container">
     <h1>Dodawanie produktu</h1>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
     <form  th:action="@{/process_register}" th:object="${liczarki}" method="post">
     <table>
 
@@ -38,6 +42,9 @@
         <button type="submit" class="btn btn-primary">Dodaj</button>
 
     </form></div>
+
+<div align="left"><a  th:href="@{/}">Powrót do menu</a></div>
+</div>
 
 
 </body>

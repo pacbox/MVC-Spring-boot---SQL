@@ -10,12 +10,17 @@
 <div class="container" align="center">
 
     <h1>Wybierz rok za jaki ma być stworozny raport:</h1>
-    <form th:action="@{/report}" th:object="${SellReport}" method="post">
-        <select  type="text" th:field="*{year}" >
+    <form th:action="@{/report}" method="post">
+        <select  type="text" th:value="${year}" name="year" >
             <option value="2014">2014</option>
             <option value="2015">2015</option>
         </select>
-        <button type="submit" class="btn btn-primary">Dodaj</button>
+
+        <select  type="text" th:value="${typ}" name="typ" >
+            <option value="gfs100">GFS-100</option>
+            <option value="gfs120">GFS-120</option>
+        </select>
+        <button  type="submit" class="btn btn-primary">Dodaj</button>
     </form>
 
 

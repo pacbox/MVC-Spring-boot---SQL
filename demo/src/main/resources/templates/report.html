@@ -9,7 +9,9 @@
 <body>
 <div class="container" align="center">
 
-<!--    <h1>Raport sprzedaży za rok: <div th:text="${SellReports.year}" > </div></h1>-->
+    <h1>Raport sprzedaży:
+        <div th:text="${year}" > </div>
+        <div th:text="${typ}" > </div></h1>
 
 
 
@@ -18,15 +20,13 @@
             <thead class="thead-dark">
             <tr>
                 <th>miesiac</th>
-                <th>typ</th>
                 <th>sprzedaz</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="c: ${SellReports}">
+            <tr th:each="c: ${sellreports}">
                 <td th:text="${c.month}">typ</td>
-                <td th:text="${c.typ}">typ</td>
-                <td th:text="${c.sell}">sell</td>
+                <td th:text="${c.sell}">typ</td>
                         </tr>
             </tbody>
         </table>
