@@ -1,4 +1,4 @@
-package Mysql.demo;
+package Mysql.demo.Entities;
 
 import org.hibernate.boot.registry.selector.StrategyRegistration;
 

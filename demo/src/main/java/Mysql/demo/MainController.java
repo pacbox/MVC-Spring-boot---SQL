@@ -1,24 +1,27 @@
 package Mysql.demo;
 
+import Mysql.demo.Entities.Liczarki;
+import Mysql.demo.Entities.SellReport;
+import Mysql.demo.Repositories.SellReportRepository;
+import Mysql.demo.Services.LiczarkiService;
+import Mysql.demo.Services.ServiceSellReport;
+import Mysql.demo.Services.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Controller
 
 public class MainController {
-//    @Autowired
-//    public LiczarkiRepository liczarkiRepository;
     @Autowired
-    public  LiczarkiService liczarkiService;
+    public LiczarkiService liczarkiService;
 
     @Autowired
     public StockService stockService;
@@ -27,9 +30,7 @@ public class MainController {
     public ServiceSellReport serviceSellReport;
 
     @Autowired
-    SellReportRepository sellReportRepository;
-
-
+    public SellReportRepository sellReportRepository;
 
     @Override
     public String toString() {
@@ -40,11 +41,8 @@ public class MainController {
     }
 
     @GetMapping("")
-    public String viewHomePage(Model model){
-    List<Stock> list = stockService.checkStock();
-
-
-       // model.addAttribute("gfs100", stockService.checkStock("gfs-100"));
+    public String viewHomePage(Model model) {
+        List<Stock> list = stockService.checkStock();
         model.addAttribute("list", list);
         return "index";
     }
@@ -55,8 +53,6 @@ public class MainController {
         //System.out.println(model);
         return "form";
     }
-
-
 
     @PostMapping("/process_register")
     public String registration(Liczarki licz, RedirectAttributes re){
@@ -73,69 +69,55 @@ public class MainController {
 
 
         }
+
     @RequestMapping("/search")
-    public ModelAndView search(@RequestParam String keyword){
-        //System.out.println(keyword);
+    public ModelAndView search(@RequestParam String keyword) {
         ModelAndView mav = new ModelAndView("liczarki");
-       List <Liczarki> listLiczarki = liczarkiService.search(keyword);
-        mav.addObject("listLiczarki",listLiczarki );
-        System.out.println(listLiczarki);
-  //      mav.addObject("message",keyword);
+        List<Liczarki> listLiczarki = liczarkiService.search(keyword);
+        mav.addObject("listLiczarki", listLiczarki);
         return mav;
     }
-//    @GetMapping("/edit/{id}")
-//    public ModelAndView edit(@PathVariable (value="id")  Long id){
-//        System.out.println(id);
-//     ModelAndView mav = new ModelAndView("edit");
-//     Liczarki editP = liczarkiService.searchByID(id);
-//     mav.addObject("liczarki",editP);
-//     System.out.println(editP);
-//     return mav;
-//    }
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable (value="id")  Long id, Model model){
-        System.out.println(id);
 
-     Liczarki editP = liczarkiService.searchByID(id);
-     model.addAttribute("liczarki", editP);
-     System.out.println(editP);
-     return "edit";
-    }
+@GetMapping("/edit/{id}")
+public String edit(@PathVariable(value = "id") Long id, Model model) {
+    Liczarki editP = liczarkiService.searchByID(id);
+    model.addAttribute("liczarki", editP);
+    return "edit";
+}
 
     @GetMapping("/stockStatus")
-    public  String stockStatus(Model model){
-        //Stock gfs100;
-//        List <Stock> stockList = ;
-        //model.addAttribute("gfs100", stockService.checkStock("gfs100"));
+    public String stockStatus(Model model) {
         model.addAttribute("gfs100", "100");
-    return "index";}
+        return "index";
+    }
 
-//    @GetMapping("/choiceyear")
-//    public String reportChoiceYear(Model model){
-//        model.addAttribute("SellReport", new SellReport());
-//
-//        return "choiceyear";}
 
     @GetMapping("/choiceyear")
-    public String reportChoiceYear(Model model){
+    public String reportChoiceYear(Model model) {
         String year = null;
         String typ = null;
-       model.addAttribute("year", year);
+        model.addAttribute("year", year);
         model.addAttribute("typ", typ);
-        return "choiceyear";}
+        return "choiceyear";
+    }
 
     @PostMapping("/report")
-    public String report(String year, String typ, Model model){
-       // List<SellReport> sellReports = (List<SellReport>) sellReportRepository.findAll();
-        List<SellReport> sellReports = serviceSellReport.createReport(typ,year);
-
-        //Collections.sort(sellReports);
+    public String report(String year, String typ, Model model) {
+        List<SellReport> sellReports = serviceSellReport.createReport(typ, year);
         Collections.reverse(sellReports);
         model.addAttribute("year", year);
         model.addAttribute("typ", typ);
         model.addAttribute("sellreports", sellReports);
 
-        return "report";}
+        return "report";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable(value="id") Long id, RedirectAttributes mess){
+        liczarkiService.deleteByID(id);
+        mess.addFlashAttribute("message", "Urządzenie usunięto ID: " + id + " !");
+        return "redirect:/liczarki";
+    }
 
 
 }

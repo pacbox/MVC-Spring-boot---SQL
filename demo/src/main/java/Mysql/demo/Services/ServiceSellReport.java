@@ -1,5 +1,7 @@
-package Mysql.demo;
+package Mysql.demo.Services;
 
+import Mysql.demo.Entities.SellReport;
+import Mysql.demo.Repositories.SellReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

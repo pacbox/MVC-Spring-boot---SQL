@@ -1,9 +1,10 @@
-package Mysql.demo;
+package Mysql.demo.Services;
 
+import Mysql.demo.Repositories.LiczarkiRepository;
+import Mysql.demo.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.Query;
 import java.util.ArrayList;
 import java.util.List;
 

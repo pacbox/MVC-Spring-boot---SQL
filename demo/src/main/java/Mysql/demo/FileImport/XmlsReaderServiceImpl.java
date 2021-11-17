@@ -1,5 +1,7 @@
-package Mysql.demo;//package Mysql.demo;
+package Mysql.demo.FileImport;//package Mysql.demo;
 //
+import Mysql.demo.Entities.Liczarki;
+import Mysql.demo.Repositories.LiczarkiRepository;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;

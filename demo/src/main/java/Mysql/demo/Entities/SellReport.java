@@ -1,4 +1,4 @@
-package Mysql.demo;
+package Mysql.demo.Entities;
 
 
 import javax.persistence.*;

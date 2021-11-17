@@ -1,5 +1,6 @@
-package Mysql.demo;
+package Mysql.demo.Repositories;
 
+import Mysql.demo.Entities.Liczarki;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ public interface LiczarkiRepository extends CrudRepository<Liczarki, Long> {
 
 //    @Query(value = "SELECT c FROM liczarki12 WHERE c.typ LIKE '%' || :keyword || '%'"
 //           + " OR c.state LIKE '%' || :keyword || '%'",nativeQuery=true)
-    @Query(value = "SELECT * FROM liczarki12 c WHERE c.typ=:keyword OR c.state =:keyword"
+    @Query(value = "SELECT * FROM liczarki12 c WHERE c.typ=:keyword OR c.state =:keyword OR c.serial =:keyword"
           , nativeQuery=true)
    public List<Liczarki> search(@Param("keyword") String keyword);
 

@@ -1,5 +1,6 @@
-package Mysql.demo;
+package Mysql.demo.Repositories;
 
+import Mysql.demo.Entities.SellReport;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -7,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+//@Repository
 public interface SellReportRepository extends CrudRepository <SellReport, Long> {
 
 //    @Query(value = "insert into sell_report (sell,typ,month,year)select count(id) as sell,typ,month(data_sprzedazy)"
