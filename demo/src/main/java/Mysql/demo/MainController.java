@@ -61,6 +61,14 @@ public class MainController {
         return "redirect:/form";
     }
 
+    @PostMapping("/process_edit")
+    public String processEdit(Liczarki licz, RedirectAttributes re){
+
+        re.addFlashAttribute("message", "Urzadzenie zeedytowanie");
+        String redirect = "redirect:/edit/"+licz.getId();
+        return redirect;
+    }
+
     @GetMapping("/liczarki")
     public String listUsers(Model model) {
     List<Liczarki> listLiczarki= liczarkiService.findAll();

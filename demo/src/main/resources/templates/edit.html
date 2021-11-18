@@ -9,9 +9,14 @@
 
 
 <body>
+
+<div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
+
 <div class="container">
     <h1>Edytuj</h1>
-    <form  th:action="@{/process_register}" th:object="${liczarki}" method="post">
+    <form  th:action="@{/process_edit}" th:object="${liczarki}" method="post">
         <table>
             <input type="hidden" th:field="*{id}"/>
             <tr>
