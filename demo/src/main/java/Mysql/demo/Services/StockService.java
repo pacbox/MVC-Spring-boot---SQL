@@ -25,9 +25,12 @@ public class StockService {
         gfs100.setCount(liczarkiRepository.checkStock(gfs100.getTyp()));
         Stock gfs120 = new Stock("gfs-120");
         gfs120.setCount(liczarkiRepository.checkStock(gfs120.getTyp()));
+        Stock usf51 = new Stock("usf-51");
+        usf51.setCount(liczarkiRepository.checkStock(usf51.getTyp()));
         List<Stock> stockList = new ArrayList<Stock>();
         stockList.add(gfs100);
         stockList.add(gfs120);
+        stockList.add(usf51);
 
 
 

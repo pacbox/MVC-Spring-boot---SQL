@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Menu główne </title>
@@ -21,8 +21,8 @@
     </div>
     <form  th:action="@{/search}" method="post" action="#">
         <input type="text" th:name="keyword"/> &nbsp;
-        <!--    <input type="submit" class="btn btn-primary" />-->
         <button type="submit" class="btn btn-primary">Wyszukaj</button>
+        <p th:if="${message}" class="alert alert-success text-center">[[${message}]] </p>
 
     </form>
     <p></p>

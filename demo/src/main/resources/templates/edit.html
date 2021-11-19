@@ -29,6 +29,7 @@
             <tr>
                 <td>Nr seryjny:</td>
                 <td><input type="text" th:field="*{serial}"  class="form-control mb-16 col-20"/></td>
+                <td th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}" class="alert alert-danger">Name Error</td>
 
             </tr>
             <tr>
@@ -45,6 +46,7 @@
             <tr>
                 <td>Data przyjecia:</td>
                 <td><input type="text" th:field="*{dateStamp}"  class="form-control mb-16 col-20"/></td>
+                <td th:if="${#fields.hasErrors('dateStamp')}" th:errors="*{dateStamp}"></td>
 
             </tr>
 

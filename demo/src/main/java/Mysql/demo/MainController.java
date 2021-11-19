@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,11 +65,18 @@ public class MainController {
     }
 
     @PostMapping("/process_edit")
-    public String processEdit(Liczarki licz, RedirectAttributes re){
+    public String processEdit(@Valid Liczarki licz, BindingResult result, RedirectAttributes re, Model model){
+        if (result.hasErrors()){
+            model.addAttribute("liczarki", licz);
+            //String redirect = "redirect:/edit/"+licz.getId();
+            return "edit";
+        } else{
+            liczarkiService.saveToRepo(licz);
+            re.addFlashAttribute("message", "Urzadzenie zeedytowanie");
+            String redirect = "redirect:/edit/"+licz.getId();
+            return redirect;
+        }
 
-        re.addFlashAttribute("message", "Urzadzenie zeedytowanie");
-        String redirect = "redirect:/edit/"+licz.getId();
-        return redirect;
     }
 
     @GetMapping("/liczarki")
@@ -79,11 +89,18 @@ public class MainController {
         }
 
     @RequestMapping("/search")
-    public ModelAndView search(@RequestParam String keyword) {
+    public ModelAndView search(@RequestParam String keyword,RedirectAttributes message) {
         ModelAndView mav = new ModelAndView("liczarki");
+        ModelAndView mav2 = new ModelAndView("redirect:/");
         List<Liczarki> listLiczarki = liczarkiService.search(keyword);
         mav.addObject("listLiczarki", listLiczarki);
-        return mav;
+        if (listLiczarki.isEmpty()) {
+           message.addFlashAttribute("message", "Brak wyników wyszukiwania dla: " + keyword);
+           return mav2;
+        }
+        else {
+            return mav;
+        }
     }
 
 @GetMapping("/edit/{id}")
